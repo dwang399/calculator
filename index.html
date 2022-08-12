@@ -21,8 +21,10 @@
         <button id = 'division' onclick="operatorAssignmentDivision()">/</button>
         <button onclick="refresh()">c</button>
         <button onclick="operate()">=</button>
-        <div>21421231</div>
+        <div id="screen">0</div>
+        
         <script>
+            
             function operatorAssignmentAddition() {
                 if (operand === 'blank') {
                     operand = '+';
@@ -94,6 +96,7 @@
                     b = 0;
                     console.log(add(c, d));
                     operand = "blank";
+                    document.getElementById("screen").textContent = add(c, d);
                     return add(c, d);
                 } else if (operand === 'x') {
                     c = a;
@@ -102,6 +105,7 @@
                     b = 0;
                     console.log(multiply(c, d));
                     operand = "blank";
+                    document.getElementById("screen").textContent = multiply(c, d);
                     return multiply(c, d);
                 } else if (operand === '/') {
                     if (b === 0) {
@@ -113,6 +117,7 @@
                     b = 0;
                     console.log(divide(c, d));
                     operand = "blank";
+                    document.getElementById("screen").textContent = divide(c, d);
                     return divide(c, d);
                 } else if (operand === '-') {
                     c = a;
@@ -121,6 +126,7 @@
                     b = 0;
                     console.log(subtract(c, d));
                     operand = 'blank';
+                    document.getElementById("screen").textContent = subtract(c, d);
                     return subtract(c, d);
                 };
             }
