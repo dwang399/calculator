@@ -28,17 +28,20 @@
             function operatorAssignmentAddition() {
                 if (operand === 'blank') {
                     operand = '+';
+                    document.getElementById("screen").textContent = '+';
                 } else {
-                    operate();
-                    operand = '+'
+                    document.getElementById("screen").textContent = operate() + ' +';
+                    operand = '+';
                 }
+                ;
                 return;
             }
             function operatorAssignmentSubtraction() {
                 if (operand === 'blank') {
                     operand = '-';
+                    document.getElementById("screen").textContent = '-';
                 } else {
-                    operate();
+                    document.getElementById("screen").textContent = operate() + ' -';
                     operand = '-';
                 }
                 return;
@@ -46,8 +49,9 @@
             function operatorAssignmentMultiplication() {
                 if (operand === 'blank') {
                     operand = 'x';
+                    document.getElementById("screen").textContent = 'x';
                 } else {
-                    operate();
+                    document.getElementById("screen").textContent = operate() + ' x';
                     operand = 'x';
                 }
                 return;
@@ -55,8 +59,9 @@
             function operatorAssignmentDivision() {
                 if (operand === 'blank') {
                     operand = `/`;
+                    document.getElementById("screen").textContent = `/`;
                 } else {
-                    operate();
+                    document.getElementById("screen").textContent = operate() + ` /`;
                     operand = `/`;
                 }
                 return;
@@ -74,11 +79,11 @@
                 if (operand === "blank") {
                     a = '' + a + x;
                     a = parseInt(a);
-                    console.log(a);
+                    document.getElementById("screen").textContent = a;
                 } else if (intermediate) {
                     b = '' + b + x;
                     b = parseInt(b);
-                    console.log(b);
+                    document.getElementById("screen").textContent = b;
                 } else {
                     a = operate();
                     b = x;
