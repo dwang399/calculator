@@ -5,26 +5,42 @@
         <title>Calculator</title>
     </head>
     <body>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
+        <button class = 'num'>0</button>
+        <button class = 'num'>1</button>
+        <button class = 'num'>2</button>
+        <button class = 'num'>3</button>
         <button>4</button>
         <button>5</button>
         <button>6</button>
         <button>7</button>
         <button>8</button>
         <button>9</button>
-        <button>+</button>
-        <button>-</button>
-        <button>x</button>
-        <button>/</button>
+        <button onclick="operand = '+'">+</button>
+        <button onclick="operand = '-'">-</button>
+        <button onclick="operand = 'x'">x</button>
+        <button onclick="operand = `/`">/</button>
         <button>c</button>
+        <button onclick="operate()">=</button>
         <div>21421231</div>
         <script>
             const add = (a, b) => a + b;
             const subtract = (a, b) => a - b;
             const multiply = (a, b) => a * b;
             const divide = (a, b) => a / b;
+            const operate = function(a,b) {
+                if (operand === '+') {
+                    return add(a, b);
+                } else if (operand === 'x') {
+                    return multiply(a, b);
+                } else if (operand === '/') {
+                    if (b === 0) {
+                        return 'You know you are not supposed to divide by 0';
+                    }
+                    return divide(a, b);
+                } else if (operand === '-') {
+                    return subtract(a, b);
+                };
+            }
         </script>
     </body>
 </html>
