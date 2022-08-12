@@ -5,40 +5,123 @@
         <title>Calculator</title>
     </head>
     <body>
-        <button class = 'num'>0</button>
-        <button class = 'num'>1</button>
-        <button class = 'num'>2</button>
-        <button class = 'num'>3</button>
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
-        <button>7</button>
-        <button>8</button>
-        <button>9</button>
-        <button onclick="operand = '+'">+</button>
-        <button onclick="operand = '-'">-</button>
-        <button onclick="operand = 'x'">x</button>
-        <button onclick="operand = `/`">/</button>
-        <button>c</button>
+        <button id = 0 class = 'num' onclick="assignment(0)">0</button>
+        <button id = 1 class = 'num' onclick="assignment(1)">1</button>
+        <button id = 2 class = 'num' onclick="assignment(2)">2</button>
+        <button id = 3 class = 'num' onclick="assignment(3)">3</button>
+        <button id = 4 class = 'num' onclick="assignment(4)">4</button>
+        <button id = 5 class = 'num' onclick="assignment(5)">5</button>
+        <button id = 6 class = 'num' onclick="assignment(6)">6</button>
+        <button id = 7 class = 'num' onclick="assignment(7)">7</button>
+        <button id = 8 class = 'num' onclick="assignment(8)">8</button>
+        <button id = 9 class = 'num' onclick="assignment(9)">9</button>
+        <button id = 'addition' onclick="operatorAssignmentAddition()">+</button>
+        <button id = 'subtraction' onclick="operatorAssignmentSubtraction()">-</button>
+        <button id = 'multiplication' onclick="operatorAssignmentMultiplication()">x</button>
+        <button id = 'division' onclick="operatorAssignmentDivision()">/</button>
+        <button onclick="refresh()">c</button>
         <button onclick="operate()">=</button>
         <div>21421231</div>
         <script>
+            function operatorAssignmentAddition() {
+                if (operand === 'blank') {
+                    operand = '+';
+                } else {
+                    operate();
+                    operand = '+'
+                }
+                return;
+            }
+            function operatorAssignmentSubtraction() {
+                if (operand === 'blank') {
+                    operand = '-';
+                } else {
+                    operate();
+                    operand = '-';
+                }
+                return;
+            }
+            function operatorAssignmentMultiplication() {
+                if (operand === 'blank') {
+                    operand = 'x';
+                } else {
+                    operate();
+                    operand = 'x';
+                }
+                return;
+            }
+            function operatorAssignmentDivision() {
+                if (operand === 'blank') {
+                    operand = `/`;
+                } else {
+                    operate();
+                    operand = `/`;
+                }
+                return;
+            }
+            function refresh() {
+                window.location.reload();
+            }
+            let a = 0;
+            let b = 0;
+            let c = 0;
+            let d = 0;
+            let intermediate = true;
+            let operand = "blank";
+            function assignment(x) {
+                if (operand === "blank") {
+                    a = '' + a + x;
+                    a = parseInt(a);
+                    console.log(a);
+                } else if (intermediate) {
+                    b = '' + b + x;
+                    b = parseInt(b);
+                    console.log(b);
+                } else {
+                    a = operate();
+                    b = x;
+                }
+            }
             const add = (a, b) => a + b;
             const subtract = (a, b) => a - b;
             const multiply = (a, b) => a * b;
             const divide = (a, b) => a / b;
-            const operate = function(a,b) {
+            const operate = function() {
                 if (operand === '+') {
-                    return add(a, b);
+                    c = a;
+                    d = b;
+                    a = add(a, b);
+                    b = 0;
+                    console.log(add(c, d));
+                    operand = "blank";
+                    return add(c, d);
                 } else if (operand === 'x') {
-                    return multiply(a, b);
+                    c = a;
+                    d = b;
+                    a = multiply(a, b);
+                    b = 0;
+                    console.log(multiply(c, d));
+                    operand = "blank";
+                    return multiply(c, d);
                 } else if (operand === '/') {
                     if (b === 0) {
-                        return 'You know you are not supposed to divide by 0';
+                        return alert('You know you are not supposed to divide by 0');
                     }
-                    return divide(a, b);
+                    c = a;
+                    d = b;
+                    a = divide(a, b);
+                    b = 0;
+                    console.log(divide(c, d));
+                    operand = "blank";
+                    return divide(c, d);
                 } else if (operand === '-') {
-                    return subtract(a, b);
+                    c = a;
+                    d = b;
+                    a = subtract(a, b);
+                    b = 0;
+                    console.log(subtract(c, d));
+                    operand = 'blank';
+                    return subtract(c, d);
                 };
             }
         </script>
